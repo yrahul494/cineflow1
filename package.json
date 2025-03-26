@@ -8,12 +8,9 @@
     "build": "cross-env NODE_ENV=production next build",
     "start": "next start",
     "lint": "next lint",
-    "postbuild": "netlify-next build",
-    "postinstall": "npm run build",
     "clean": "rm -rf .next",
-  "rebuild": "npm run clean && npm run build"
-
-  },
+    "rebuild": "npm run clean && npm run build"
+},
   "dependencies": {
     "@emotion/react": "^11.14.0",
     "@emotion/styled": "^11.14.0",
