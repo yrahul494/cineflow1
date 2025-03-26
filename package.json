@@ -2,13 +2,17 @@
   "name": "cineflow-frontend",
   "version": "0.1.0",
   "private": true,
-  "scripts": {
+ "scripts": {
     "dev": "cross-env NODE_ENV=local next dev",
     "local": "cross-env NODE_ENV=local next dev",
-    "build": "cross-env NODE_ENV=local next build",
+    "build": "cross-env NODE_ENV=production next build",
     "start": "next start",
     "lint": "next lint",
-    "postbuild": "netlify-next build"
+    "postbuild": "netlify-next build",
+    "postinstall": "npm run build",
+    "clean": "rm -rf .next",
+  "rebuild": "npm run clean && npm run build"
+
   },
   "dependencies": {
     "@emotion/react": "^11.14.0",
