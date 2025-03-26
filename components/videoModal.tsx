@@ -57,7 +57,11 @@ const VideoModal = () => {
   console.log(inputComment, "inputComment");
   console.log(clickedCard, "clickedCard");
   // const [isModalOpen, setIsModalOpen] = useState(false);
-
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      ReactModal.setAppElement('body');
+    }
+  }, []);
   useEffect(() => {
     const storedItems = localStorage.getItem("myLists");
     if (storedItems) {

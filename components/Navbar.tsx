@@ -86,6 +86,11 @@ export default function Navbar() {
             </Link>
           </li>
           <li>
+            <Link href="/myList" className="links">
+              WatchList
+            </Link>
+          </li>
+          <li>
             <Link href="/profile" className="links">
               Profile
             </Link>
