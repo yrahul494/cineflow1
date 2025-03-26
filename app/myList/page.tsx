@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useState, useEffect } from 'react';
-import Image from 'next/image';
 import { 
   Container, 
   Typography, 
@@ -169,7 +168,7 @@ export default function MyListPage() {
           </DialogTitle>
           <DialogContent>
             <DialogContentText id="alert-dialog-description" color="white">
-              Are you sure you want to remove "{itemToRemove?.title}" from your watchlist?
+              Are you sure you want to remove {itemToRemove?.title} from your watchlist?
             </DialogContentText>
           </DialogContent>
           <DialogActions>

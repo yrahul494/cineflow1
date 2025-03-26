@@ -13,16 +13,16 @@ import {
   Paper,
 } from "@mui/material";
 import UploadIcon from "@mui/icons-material/Upload";
-import { fetchUserProfile } from "../../redux/slices/userSlice";
+// import { fetchUserProfile } from "../../redux/slices/userSlice";
 import { AppDispatch } from "../../redux/store";
 import { logout } from "../../redux/slices/authSlice";
 import { useRouter } from "next/navigation";
 
-interface WatchListItem {
-  poster: string;
-  title: string;
-  // Add other properties as needed
-}
+// interface WatchListItem {
+//   poster: string;
+//   title: string;
+//   // Add other properties as needed
+// }
 
 export default function ProfilePage() {
   const dispatch = useDispatch<AppDispatch>();
@@ -31,7 +31,7 @@ export default function ProfilePage() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [avatar, setAvatar] = useState("");
-  const [mywatchList, setMywatchList] = useState<WatchListItem[]>([]);
+  // const [mywatchList, setMywatchList] = useState<WatchListItem[]>([]);
 
   const handleAvatarChange = async (
     event: React.ChangeEvent<HTMLInputElement>
@@ -59,11 +59,11 @@ export default function ProfilePage() {
     }
   };
 
-  useEffect(() => {
-    dispatch(fetchUserProfile("arg"));
-    const watcherLater = JSON.parse(localStorage.getItem("myLists") ?? "[]");
-    setMywatchList(watcherLater);
-  }, []);
+  // useEffect(() => {
+  //   dispatch(fetchUserProfile("arg"));
+  //   const watcherLater = JSON.parse(localStorage.getItem("myLists") ?? "[]");
+  //   setMywatchList(watcherLater);
+  // }, []);
 
   useEffect(() => {
     if (profile) {
