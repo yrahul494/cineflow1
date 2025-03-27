@@ -10,13 +10,13 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap");
 
 :root {
-  --background: #141414; /* Dark Netflix-like background */
-  --foreground: #e50914; /* Netflix red for buttons */
+  --background: #1A2823; /* Dark Netflix-like background */
+  --foreground: #20592D; /* Netflix red for buttons */
   --textColor: #ffffff; /* White text */
-  --gray-light: #b3b3b3; /* Gray text */
+  --gray-light: #e7e4e4; /* Gray text */
   --input-bg: #333333; /* Input fields background */
   --input-border: #666666; /* Input border */
-  --input-focus: #e50914; /* Focus color */
+  --input-focus: #27694a; /* Focus color */
   --font: "Inter", sans-serif;
 }
 
@@ -72,7 +72,7 @@ button {
 }
 
 button:hover {
-  background: #b20710; /* Slightly darker red on hover */
+  background: #1A2823; /* Slightly darker red on hover */
 }
 
 /* ✅ Links */
@@ -125,11 +125,11 @@ a {
   left: 0;
   width: 100%;
   padding: 5px;
-  background: linear-gradient(to top, transparent, rgba(0, 0, 0, 0.9));
+  /* background: linear-gradient(to top, transparent, rgba(0, 0, 0, 0.9)); */
   color: white;
   z-index: 1000;
   transition: background 0.3s ease;
-  background-color: #120c1f;
+  background-color: #1A2823;
 }
 
 .Scrollednavbar {
@@ -142,11 +142,11 @@ a {
   left: 0;
   width: 100%;
   padding: 5px;
-  background: linear-gradient(to top, transparent, rgba(0, 0, 0, 30.9));
+  /* background: linear-gradient(to top, transparent, rgba(0, 0, 0, 30.9)); */
   color: white;
   z-index: 1000;
   transition: background 0.3s ease;
-  background-color: #120c1f;
+  background-color: #1A2823;
 }
 
 .logo Link {
@@ -218,6 +218,7 @@ a {
   font-weight: bold;
   margin-bottom: 15px;
   letter-spacing: 1px;
+  background: #0000000f;
   font-family: "Netflix Sans";
 }
 
@@ -228,6 +229,7 @@ a {
   max-width: 700px;
   /* margin-left: auto; */
   margin-right: auto;
+  background: #0000000f;
   font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
@@ -243,7 +245,7 @@ a {
   padding: 12px 30px;
   font-size: 1rem;
   font-weight: bold;
-  background-color: #e50914; /* Netflix Red */
+  background-color: #253f36; /* Netflix Red */
   color: white;
   border: none;
   border-radius: 3px;
@@ -253,7 +255,7 @@ a {
 
 .playBtn:hover,
 .moreInfoBtn:hover {
-  background-color: #f40612; /* Darker Red */
+  background-color: #13381c; /* Darker Red */
 }
 
 .card {
@@ -426,7 +428,7 @@ a {
 /* Gradient Text */
 .logo-text {
   position: relative;
-  background: linear-gradient(91deg, #e80a12, #e81717);
+  background: linear-gradient(91deg, #e0e9e2, #b4e4bf);
   -webkit-background-clip: text; /* Use text as a mask to show gradient */
   color: transparent; /* Make the text color transparent to show gradient */
   z-index: 1; /* Ensure text is on top */

@@ -46,7 +46,7 @@ const cardStyle:CSSProperties = {
   width: "300px",
   height: "300px",
   background:
-    "linear-gradient(149deg, #6C1E41 6.96%, #251743 40.17%, #120c1f 73.39%)",
+    "linear-gradient(149deg,rgb(2, 56, 15) 6.96%, #1A2823 40.17%, #20592D 73.39%)",
   borderRadius: "10px",
   boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
   overflow: "hidden",
@@ -61,7 +61,7 @@ const buttonStyle = {
   marginTop: "15px",
   padding: "10px 15px",
   border: "none",
-  background: "#e50914",
+  background: "#1A2823",
   color: "white",
   borderRadius: "5px",
   cursor: "pointer",
@@ -109,8 +109,8 @@ const SubscriptionCard = ({ plan }: { plan: Plan }) => {
       <button
        onClick={() => {handleCheckout(plan.planName, plan.price)}}
         style={buttonStyle}
-        onMouseEnter={(e) => (e.currentTarget.style.background = "#b20710")}
-        onMouseLeave={(e) => (e.currentTarget.style.background = "#e50914")}
+        onMouseEnter={(e) => (e.currentTarget.style.background = "#1A2823")}
+        onMouseLeave={(e) => (e.currentTarget.style.background = "#1A2823")}
       >
         Subscribe
       </button>
@@ -132,7 +132,7 @@ const SubscriptionCards = () => {
         padding: "20px",
       }}
     >
-      <h1 style={{ fontSize: "2.5rem", marginBottom: "20px" }}>
+      <h1 style={{ fontSize: "2.5rem", marginTop: "25px" ,marginBottom:"20px" }}>
         Choose Your Plan
       </h1>
       <div
