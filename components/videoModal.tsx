@@ -25,26 +25,20 @@ import ClipLoader from "react-spinners/ClipLoader";
 import { Avatar, TextField, Tooltip } from "@mui/material";
 import ThumbUpIcon from '@mui/icons-material/ThumbUp';
 import { RootState } from '../redux/store';
-// ReactModal.setAppElement('#__next');
+import toast, { Toaster } from 'react-hot-toast';
 
 interface ClickCard {
   _id: string;
+  title?: string;
 }
 
-
 const VideoModal = () => {
-  // const comments = 3;
-  // const override: CSSProperties = {
-  //   display: "block",
-  //   margin: "0 auto",
-  //   borderColor: "red",
-  // };
   const router = useRouter();
   const dispatch = useDispatch<AppDispatch>();
   const [items, setItems] = useState<ClickCard[]>([]);
   const [showCommentBox, setShowCommentBox] = useState<boolean>(false);
   const [inputComment, setInputComment] = useState<string>("");
-  // const playerRef = useRef<any>(null);
+  
   const {
     showDialog,
     clickedCard,
@@ -53,53 +47,71 @@ const VideoModal = () => {
     likeResponse,
   } = useSelector((state:RootState) => state.movie);
   
-  
-  console.log(inputComment, "inputComment");
-  console.log(clickedCard, "clickedCard");
-  // const [isModalOpen, setIsModalOpen] = useState(false);
   useEffect(() => {
     if (typeof window !== 'undefined') {
       ReactModal.setAppElement('body');
     }
   }, []);
+
   useEffect(() => {
     const storedItems = localStorage.getItem("myLists");
     if (storedItems) {
       try {
-        setItems(JSON.parse(storedItems)); // Ensure data is parsed properly
+        setItems(JSON.parse(storedItems)); 
       } catch (error) {
         console.error("Error parsing localStorage data", error);
-        setItems([]); // Reset to empty array if JSON is invalid
+        setItems([]); 
       }
     }
   }, []);
 
   const handleModal = () => {
-    // event.stopPropagation()
     dispatch(updateUserWatchHistory(clickedCard?._id));
-    // console.log("click");
     dispatch(setShowDialog(!showDialog));
     router.push(`video/${clickedCard?._id}`);
     dispatch(setStoreMovie(clickedCard?.url));
   };
+
   const closeModal = () => {
     dispatch(setShowDialog(false));
-    // if (playerRef.current) {
-    //   playerRef.current.seekTo(0); // Optionally reset the video to the beginning
-    //   playerRef.current.stop(); // Stop the video
-    // }
   };
+
   const handleWatchList = (clickedCard:ClickCard) => {
     const isExist = items?.some((ele) => ele?._id == clickedCard?._id);
     if (!isExist) {
       const newArr = [...items, clickedCard];
       const updatedItems = newArr;
-      setItems(updatedItems); // Update state
+      setItems(updatedItems);
       localStorage.setItem("myLists", JSON.stringify(updatedItems));
+      
+      // Show success toast
+      toast.success(`${clickedCard.title || 'Movie'} added to watchlist!`, {
+        duration: 4000,
+        position: 'top-right',
+        style: {
+          background: '#4CAF50', // Green background
+          color: 'white',
+          padding: '16px',
+          borderRadius: '8px'
+        }
+      });
+    } else {
+      // Show info toast if movie is already in watchlist
+      toast.error(`${clickedCard.title || 'Movie'} is already in your watchlist`, {
+        duration: 4000,
+        position: 'top-right',
+        style: {
+          background: '#FFA500', // Orange background
+          color: 'white',
+          padding: '16px',
+          borderRadius: '8px'
+        }
+      });
     }
 
     dispatch(setShowDialog(false));
   };
+
 
   const handleComment = async () => {
     const commentData = {
@@ -110,15 +122,18 @@ const VideoModal = () => {
     if (res?.payload?.status == 200) {
       dispatch(getCommentVideo(clickedCard?._id));
     }
-    console.log(res, "res");
     setInputComment("");
   };
+
   const handleLike = () => {
     dispatch(addLikeToVideo(clickedCard?._id));
   };
+
   return (
     <div>
-      {/* <div className="close-button" onClick={closeModal}><CloseIcon/></div> */}
+      {/* Add Toaster component to render toasts */}
+      <Toaster />
+      
       <ReactModal
         isOpen={showDialog}
         onRequestClose={closeModal}
@@ -126,17 +141,7 @@ const VideoModal = () => {
         className="modal"
         overlayClassName="modal-overlay"
       >
-        {/* <button onClick={handleModal} className="close-button">close</button> */}
         {showDialog ? (
-          // <div className="video-container">
-          //   <ReactPlayer
-          //     ref={playerRef}
-          //     url={selectedMovie}
-          //     playing={true}
-          //     controls={true}
-          //     className="player"
-          //   />
-          // </div>
           <div>
             <Card>
               <CardMedia
@@ -150,7 +155,7 @@ const VideoModal = () => {
                 <div className="show-des">
                   {showDes ||
                     clickedCard?.aiDescription ||
-                    "Generating Descripation using AI...."}
+                    "Generating Description using AI...."}
                 </div>
               </CardContent>
               <div className="show-data">
