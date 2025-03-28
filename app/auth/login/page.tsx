@@ -64,9 +64,10 @@ export default function Home() {
       }
     } catch (error) {
       // Handle any unexpected errors
-      toast.error('An unexpected error occurred', {
+      toast.error(`An unexpected error occurred ${error}`, {
         duration: 4000,
-        position: 'top-right'
+        position: 'top-right',
+               
       });
     }
   }
